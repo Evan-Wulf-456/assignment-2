@@ -1,21 +1,31 @@
 from data_representation import DataTable
 from predictors import MajorityClassPredictor, NearestNeighborPredictor
-from exceptions import OutOfSampleError
+from exceptions1 import OutOfSampleError
 
 
 def calculate_accuracy(predictions, actual):
-    """
-    Calculate prediction accuracy.
-    """
-    pass
+    if len(predictions) == 0:
+        raise ValueError("Cannot divide by zero.")
+    if len(predictions) != len(actual):
+        raise ValueError("Predictions and actual lists must have equal lengths")
+     
+    matched_predictions = 0 # initialize the matched predictions to 0 
+    for prediction, actual_label in zip(predictions, actual): # extract the individual values of the predictions and actual list 
+        if prediction == actual_label: # if the prediction matches the actual value, then increment the matched prediction by one 
+            matched_predictions += 1 
+    accuracy = matched_predictions / len(predictions) # after incrementing the matched predictions, calculate the predictions that matched over the total amount of predictions. If the counted predictions is close to the total amount of predictions in the dataset, then accuracy is high. Otherwise, accuracy is low. 
+        
 
+    return accuracy # give the variable or the result of the calculation back to the function 
+    
+    
 
 def main():
 
     # Load datasets
-    historical = DataTable("data/cancer_historical.csv")
-    new_cases = DataTable("data/cancer_new_cases.csv")
-    labels = DataTable("data/cancer_new_cases_labels.csv")
+    historical = DataTable("Data/cancer_historical.csv")
+    new_cases = DataTable("Data/cancer_new_cases.csv")
+    labels = DataTable("Data/cancer_new_cases_labels.csv")
 
 
     # Create predictors

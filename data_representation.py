@@ -87,18 +87,27 @@ class DataTable:
         Return average of a column.
         """
         values = self.get_column(col_name)
-        return sum(values) / len(values) if values else 0 #taking the average sum diviide by the length 
+        if values:
+            return sum(values) / len(values)  
+        else:
+            return 0 #taking the average sum diviide by the length 
 
     def get_column_min(self, col_name: str) -> float:
         """
         Return minimum value of a column.
         """
         values = self.get_column(col_name)
-        return min(values) if values else 0
+        if values: 
+            return min(values) 
+        else:
+            return 0
 
     def get_column_max(self, col_name: str) -> float:
         """
         Return maximum value of a column.
         """
         values = self.get_column(col_name)
-        return max(values) if values else 0
+        if values:
+            return max(values)  
+        else:
+            return 0

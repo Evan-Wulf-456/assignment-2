@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import math
 
-from exceptions1 import OutOfSampleError
+from exceptions import OutOfSampleError
 
 
 class Predictor(ABC):
